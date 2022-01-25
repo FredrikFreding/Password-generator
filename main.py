@@ -1,4 +1,5 @@
 from tkinter import *
+import pyperclip
 import string
 import random
 
@@ -16,7 +17,9 @@ def createPassword():
     chars = list(string.ascii_letters + string.digits + "!@#$%^&*()")
     random.shuffle(chars)
 
+    global pwd
     pwd = []
+    
     for i in range(charsLen):
         pwd.append(random.choice(chars))
     
@@ -24,10 +27,14 @@ def createPassword():
     pwd = "".join(pwd)
     pwdText.config(text=pwd)
 
+def copyPassword():
+    pyperclip.copy(pwd)
+
 # Creating Label Widgets with text.
 header = Label(root, text="Password Generator")
 sliderText = Label(root, text="How long do you want your password to be?")
-btn = Button(root, text='Create Password', command=createPassword)
+createPWD = Button(root, text='Create Password', command=createPassword)
+copyPWD = Button(root, text='Copy to clipboard', command=copyPassword)
 pwdText = Label(root, text="Your new password")
 emptyLine = Label(root, text=" ")
 
@@ -41,12 +48,11 @@ header.config(font=(30))
 
 # Packing everything so it shows on our screen.
 header.pack(anchor = CENTER)
-emptyLine.pack()
 sliderText.pack()
 slider.pack(anchor = CENTER)
-emptyLine.pack()
+copyPWD.pack()
 pwdText.pack()
-btn.pack(side=BOTTOM)
+createPWD.pack(side=BOTTOM)
 
 # Creating the loop that runs until we close the window.
 root.mainloop()
