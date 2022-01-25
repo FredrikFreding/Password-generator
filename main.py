@@ -11,6 +11,7 @@ root.geometry("300x300")
 #  DoubleVar: Holds a float; default value 0.0
 v1 = DoubleVar()
 
+# Create a password and write it to the screen, this function start when createPWD button is clicked.
 def createPassword():
     charsLen = slider.get()
 
@@ -27,6 +28,7 @@ def createPassword():
     pwd = "".join(pwd)
     pwdText.config(text=pwd)
 
+# Copy the password to clipboard. This function starts when copyPWD button is clicked.
 def copyPassword():
     pyperclip.copy(pwd)
 
@@ -56,6 +58,3 @@ createPWD.pack(side=BOTTOM)
 
 # Creating the loop that runs until we close the window.
 root.mainloop()
-import os 
-import inspect 
-print(os.path.dirname(inspect.getfile(inspect))+"/site-packages") 
