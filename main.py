@@ -56,5 +56,8 @@ copyPWD.pack()
 pwdText.pack()
 createPWD.pack(side=BOTTOM)
 
+# Running the createPassword function.
+createPassword()
+
 # Creating the loop that runs until we close the window.
 root.mainloop()
